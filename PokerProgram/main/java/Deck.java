@@ -33,6 +33,31 @@ public class Deck {
 		return tempCard;
 	}
 	
+	public static boolean isPair(Card card1, Card card2, Card card3, Card card4, Card card5){
+		boolean pair = false;
+		int score = 0;
+
+		if(card1.face.equals(card2.face) || card1.face.equals(card3.face) || card1.face.equals(card4.face) || card1.face.equals(card5.face)){
+			score++;
+		}
+		if(card2.face.equals(card3.face) || card2.face.equals(card4.face) || card2.face.equals(card5.face)){
+			score++;
+		}
+		if(card3.face.equals(card4.face) || card3.face.equals(card5.face)){
+			score++;
+		}
+		if(card4.face.equals(card5.face)){
+			score++;
+		}
+
+		//if score == 1, then only one pair
+		if(score == 1){
+			pair = true;
+		}
+
+		return pair;
+	}
+	
 	
 
 }

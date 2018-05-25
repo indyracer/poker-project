@@ -19,28 +19,6 @@ public class HandTest {
 			card5 = gameDeck.dealCard();
 		}
 
-		//evaluate card methods go here
-		/*public static boolean isPair(Card card1, Card card2, Card card3, Card card4, Card card5){
-			boolean isPair = false;
-			Card [] hand = {card1, card2, card3, card4, card5}; //place cards in array, so comparison can loop over all cards
-			int score = 0; //at end of looping, if score == 1, have a pair
-			for(int i = 0; i < 5; i++){
-				for(int j = 1; j < 5; j++){
-					if(hand[i].face.equals(hand[j].face)){
-						score++;
-					}
-				}
-			}
-
-			if(score == 1){
-				isPair = true;
-				System.out.println("score = " + score);
-			}
-
-			return isPair;
-		}*/
-
-
 		public static boolean isPair(Card card1, Card card2, Card card3, Card card4, Card card5){
 			boolean pair = false;
 			int score = 0;
