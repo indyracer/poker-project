@@ -60,6 +60,8 @@ public class CardTest {
 		Card card1 = new Card("Two", "Spade");
 		
 		assertEquals("Two of Spade", card1.toString());
+		
+		
 	}
 	
 	
