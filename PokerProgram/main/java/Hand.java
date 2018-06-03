@@ -105,6 +105,31 @@ public class Hand {
 		return pair;
 	}
 	
+	//method to evalute if hand is three of a kind
+	public boolean isThreeKind(Card[] hand){
+		boolean isThreeKind = false;
+		
+		int [] score = Hand.faceScore(hand);
+		
+		//place scores in an array, looking for sequence that scoreThree = 1, scoreOne = 2
+		int countThree = 0, countOne = 0;
+		for(int i = 0; i < score.length; i++){
+			if(score[i] == 3){
+				countThree++;
+			}
+			
+			if(score[i] == 1){
+				countOne++;
+			}
+		}
+		
+		if(countThree == 1 && countOne == 2){
+			isThreeKind = true;
+		}
+		
+		return isThreeKind;
+	}
+	
 	
 
 }
