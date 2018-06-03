@@ -130,6 +130,35 @@ public class Hand {
 		return isThreeKind;
 	}
 	
+	//method to evaluate if two pair
+	public boolean isTwoPair(Card[] hand){
+		boolean twoPair = false;
+		int [] score = Hand.faceScore(hand);
+		
+		//place scores in an array, look at length of array, for two pair countTwo == 2, countOne = 1
+		int countTwo = 0, countOne = 0, countOther = 0;
+		
+		for(int i = 0; i < score.length; i++){
+			if(score[i] == 2){
+				countTwo++;
+			}
+			if(score[i] == 1){
+				countOne++;
+			}
+		}
+		
+		int [] pairSequence = {countTwo, countOne, countOther};
+		
+		//sequence to determine there is only 1 pair
+		if(pairSequence[0] == 2 && pairSequence[1] == 1){
+			twoPair = true;
+		}
+		
+		return twoPair;
+		
+	}
+
+	
 	
 
 }
