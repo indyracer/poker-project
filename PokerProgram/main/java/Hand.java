@@ -189,6 +189,27 @@ public class Hand {
 		
 		return isFullHouse;		
 	}
+	
+	//method to evaluate if four of a kind
+	public boolean isFourKind(Card[] hand){
+		boolean isFourKind = false;
+		
+		int [] score = Hand.faceScore(hand);
+		
+		int countFour = 0;
+		
+		for(int i = 0; i < score.length; i++){
+			if(score[i] == 4){
+				countFour++;
+			}
+		}
+		
+		if(countFour == 1){
+			isFourKind = true;
+		}
+		
+		return isFourKind;
+	}
 
 	
 	
