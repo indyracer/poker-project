@@ -163,6 +163,32 @@ public class Hand {
 		return twoPair;
 		
 	}
+	
+	//method to evaluate if full house
+	public boolean isFullHouse(Card[] hand){
+		boolean isFullHouse = false;
+		
+		int [] score = Hand.faceScore(hand);
+		
+		//place scores in an array, look at length of array, should be 4 (1 card with 2 points, 3 cards with 1 point)
+		int countTwo = 0, countThree = 0;
+		
+		for(int i = 0; i < score.length; i++){
+			
+			if(score[i] == 2){
+				countTwo++;
+			}
+			if(score[i] == 3){
+				countThree++;
+			}
+		}
+		
+		if(countTwo == 1 && countThree == 1){
+			isFullHouse = true;
+		}
+		
+		return isFullHouse;		
+	}
 
 	
 	
