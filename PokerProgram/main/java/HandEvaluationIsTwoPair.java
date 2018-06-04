@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class IsTwoPair {
+public class HandEvaluationIsTwoPair {
 	
 	Card tempCard1 = new Card("Three", "Diamonds");
 	Card tempCard2 = new Card("Three", "Hearts");

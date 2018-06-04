@@ -6,6 +6,8 @@ public class HandTest {
 
 	public static class Hand{
 		Card card1, card2, card3, card4, card5;
+		
+		Card [] hand = new Card[5];
 
 
 		public Hand(){
@@ -19,7 +21,11 @@ public class HandTest {
 			card5 = gameDeck.dealCard();
 
 			//place cards in an array for evaluations
-			Card [] hand = {card1, card2, card3, card4, card5};
+			hand[0] = card1;
+			hand[1] = card2;
+			hand[2] = card3;
+			hand[3] = card4;
+			hand[4] = card5;
 
 
 		}

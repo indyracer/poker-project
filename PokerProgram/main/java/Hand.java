@@ -2,6 +2,8 @@
 public class Hand {
 
 	Card card1, card2, card3, card4, card5;
+	
+	Card [] hand = new Card[5];
 
 
 	public Hand(){
@@ -15,7 +17,11 @@ public class Hand {
 		card5 = gameDeck.dealCard();
 
 		//place cards in an array for evaluations
-		Card [] hand = {card1, card2, card3, card4, card5};
+		hand[0] = card1;
+		hand[1] = card2;
+		hand[2] = card3;
+		hand[3] = card4;
+		hand[4] = card5;
 		
 	}
 	
@@ -105,7 +111,7 @@ public class Hand {
 		return pair;
 	}
 	
-	//method to evalute if hand is three of a kind
+	//method to evaluate if hand is three of a kind
 	public boolean isThreeKind(Card[] hand){
 		boolean isThreeKind = false;
 		
