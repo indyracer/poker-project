@@ -26,9 +26,38 @@ public class Hand {
 	}
 	
 	//methods for hand
+	
+	//calculate suit score
+	public static int[] suitScore(Card [] hand){
+		//score hand based on suits
+		int diamondScore = 0, heartScore = 0, clubScore = 0, spadeScore = 0;
+		
+		//loop thru cards, score the suit value
+		for(int i = 0; i < hand.length; i++){
+			switch(hand[i].suit){
+			case "Diamonds":
+				diamondScore++;
+				break;
+			case "Hearts":
+				heartScore++;
+				break;
+			case "Clubs":
+				clubScore++;
+				break;
+			case "Spades":
+				spadeScore++;
+				break;
+			}
+		}
+		
+		//place suit score into an array
+		int [] suitScore = {diamondScore, heartScore, clubScore, spadeScore};
+		
+		return suitScore;		
+	}
 	//calculate score of hand
 	public static int[] faceScore(Card [] hand){
-		int deuceScore = 0, twoScore = 0, threeScore = 0, fourScore = 0, fiveScore = 0, sixScore = 0, sevenScore = 0,
+		int deuceScore = 0, threeScore = 0, fourScore = 0, fiveScore = 0, sixScore = 0, sevenScore = 0,
 				eightScore = 0, nineScore = 0, tenScore = 0, jackScore = 0, queenScore = 0, kingScore = 0, aceScore = 0;
 
 		//loop thru cards, score the face values

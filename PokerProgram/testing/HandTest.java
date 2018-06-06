@@ -30,11 +30,39 @@ public class HandTest {
 
 		}
 
-
+		public static int[] suitScore(Card [] hand){
+			//score hand based on suits
+			int diamondScore = 0, heartScore = 0, clubScore = 0, spadeScore = 0;
+			
+			//loop thru cards, score the suit value
+			for(int i = 0; i < hand.length; i++){
+				switch(hand[i].suit){
+				case "Diamonds":
+					diamondScore++;
+					break;
+				case "Hearts":
+					heartScore++;
+					break;
+				case "Clubs":
+					clubScore++;
+					break;
+				case "Spades":
+					spadeScore++;
+					break;
+				}
+			}
+			
+			//place suit score into an array
+			int [] suitScore = {diamondScore, heartScore, clubScore, spadeScore};
+			
+			return suitScore;		
+		}
+		
+		
 		public static int[] faceScore(Card [] hand){
 			//score the hand
 			//setup face scores
-			int deuceScore = 0, twoScore = 0, threeScore = 0, fourScore = 0, fiveScore = 0, sixScore = 0, sevenScore = 0,
+			int deuceScore = 0, threeScore = 0, fourScore = 0, fiveScore = 0, sixScore = 0, sevenScore = 0,
 					eightScore = 0, nineScore = 0, tenScore = 0, jackScore = 0, queenScore = 0, kingScore = 0, aceScore = 0;
 
 			//loop thru cards, score the face values
@@ -94,6 +122,9 @@ public class HandTest {
 		Card tempCard5 = new Card("Queen", "Hearts");
 		Card tempCard6 = new Card("Five", "Diamonds");
 		Card tempCard7 = new Card("Five", "Spades");
+		Card tempCard8 = new Card("Six", "Diamonds");
+		Card tempCard9 = new Card("Seven", "Diamonds");
+		Card tempCard10 = new Card("Nine", "Diamonds");
 
 		/*
 		 * Scenario:  create a hand, check that each card has a face and suit value
@@ -122,15 +153,35 @@ public class HandTest {
 
 			int [] score = Hand.faceScore(hand);
 			//face values in the hand:  three(2x), Four, jack, queen
-			System.out.println(score[1]);
 
 			assertEquals(2, score[1]);
 			assertEquals(1, score[2]);
 			assertEquals(1, score[9]);
 			assertEquals(1, score[10]);
 			assertEquals(0, score[0]);
-
-
+		}
+		
+		/*
+		 * Scenario:  create hand, test that suit scoring is happening
+		 */
+		@Test
+		public void testSuitScoring(){
+			
+			Card [] hand1 = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5}; 
+		
+			int [] score = Hand.suitScore(hand1);
+			
+			System.out.println(score[0]);
+			System.out.println(score[1]);
+			System.out.println(score[2]);
+			System.out.println(score[3]);
+			
+			assertEquals(1,	score[0]); //diamonds score
+			assertEquals(2,	score[1]); //hearts score
+			assertEquals(1, score[2]);//clubs score
+			assertEquals(1, score[3]);//spades score
+			
+			
 		}
 
 	}
