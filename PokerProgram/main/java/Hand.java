@@ -239,6 +239,24 @@ public class Hand {
 		
 		return isFourKind;
 	}
+	
+	//method to evaluate straight
+	public boolean isStraight(Card[] hand){
+		boolean isStraight = false;
+		
+		int[] score = Hand.faceScore(hand);
+		
+		//loop through scores, see if any 5 in a row.  end at index 8, lowest index of highest possible straight
+		for(int i = 0; i <= 8; i++){
+			if(score[i] == 1 && score[i +1] == 1 && score[i + 2] == 1 && score[i + 3] == 1 && score[i + 4] == 1){
+				isStraight = true;
+				break;
+			}
+			
+		}
+		
+		return isStraight;
+	}
 
 	
 	
