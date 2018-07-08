@@ -110,10 +110,53 @@ public class Hand {
 		return faceScore;
 	}
 	
+	//method to display evaluation results
+	public String handEvaluation(Card[] hand){
+		//put in logic to evaluate the various evaluations and display the evalution
+		String evaluation = "";
+		
+		if(Hand.isPair(hand)){
+			evaluation = "Pair";
+		}
+		
+		else if(Hand.isTwoPair(hand)){
+			evaluation =  "Two Pair"; 
+		}
+		
+		else if (Hand.isThreeKind(hand)){
+			evaluation = "Three of a Kind";
+		}
+		
+		else if (Hand.isFourKind(hand)){
+			evaluation = "Four of a Kind";
+		}
+		
+		else if(Hand.isFullHouse(hand)){
+			evaluation = "Full House";
+		}
+		
+		else if (Hand.isStraight(hand) && !Hand.isFlush(hand)){
+			evaluation = "Straight";
+		}
+		
+		else if (Hand.isStraight(hand) && Hand.isFlush(hand)){
+			evaluation = "Straight Flush";
+		}
+		else if (Hand.isFlush(hand) && !Hand.isStraight(hand)){
+			evaluation = "Flush";
+		}
+		else {
+			evaluation = "High Card";
+		}
+		
+		return evaluation;
+	}
+	
+	
 	//method to evaluate if hand is a pair
-	public boolean isPair(Card[] hand){
+	public static boolean isPair(Card[] hand){
 		boolean pair = false;
-		int [] score = Hand.faceScore(hand);
+		int [] score = faceScore(hand);
 		
 		//place scores in an array, look at length of array, should be 4 (1 card with 2 points, 3 cards with 1 point)
 		int countTwo = 0, countOne = 0, countOther = 0;
@@ -141,7 +184,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if hand is three of a kind
-	public boolean isThreeKind(Card[] hand){
+	public static boolean isThreeKind(Card[] hand){
 		boolean isThreeKind = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -166,7 +209,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if two pair
-	public boolean isTwoPair(Card[] hand){
+	public static boolean isTwoPair(Card[] hand){
 		boolean twoPair = false;
 		int [] score = Hand.faceScore(hand);
 		
@@ -194,7 +237,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if full house
-	public boolean isFullHouse(Card[] hand){
+	public static boolean isFullHouse(Card[] hand){
 		boolean isFullHouse = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -220,7 +263,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if four of a kind
-	public boolean isFourKind(Card[] hand){
+	public static boolean isFourKind(Card[] hand){
 		boolean isFourKind = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -241,7 +284,7 @@ public class Hand {
 	}
 	
 	//method to evaluate straight
-	public boolean isStraight(Card[] hand){
+	public static boolean isStraight(Card[] hand){
 		boolean isStraight = false;
 		
 		int[] score = Hand.faceScore(hand);
@@ -256,6 +299,18 @@ public class Hand {
 		}
 		
 		return isStraight;
+	}
+	
+	public static boolean isFlush(Card [] hand){
+		boolean isFlush = false;
+		
+		int [] score = Hand.suitScore(hand);
+		
+		if(score[0] == 5 || score[1] == 5 || score[2] == 5 || score[3] == 5){
+			isFlush = true;
+		}
+		
+		return isFlush;
 	}
 
 	
