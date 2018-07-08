@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class HandTest {
+public class HandTest2 {
 
 	public static class Hand{
 		Card card1, card2, card3, card4, card5;
@@ -30,13 +30,15 @@ public class HandTest {
 
 		}
 
-		public static int[] suitScore(Card [] hand){
+		public static int[] suitScore(Hand hand){
 			//score hand based on suits
 			int diamondScore = 0, heartScore = 0, clubScore = 0, spadeScore = 0;
 			
+			Card [] cards = {hand.card1, hand.card2, hand.card3, hand.card4, hand.card5};
+			
 			//loop thru cards, score the suit value
-			for(int i = 0; i < hand.length; i++){
-				switch(hand[i].suit){
+			for(int i = 0; i < cards.length; i++){
+				switch(cards[i].suit){
 				case "Diamonds":
 					diamondScore++;
 					break;
@@ -59,15 +61,16 @@ public class HandTest {
 		}
 		
 		
-		public static int[] faceScore(Card [] hand){
+		public static int[] faceScore(Hand hand){
 			//score the hand
 			//setup face scores
 			int deuceScore = 0, threeScore = 0, fourScore = 0, fiveScore = 0, sixScore = 0, sevenScore = 0,
 					eightScore = 0, nineScore = 0, tenScore = 0, jackScore = 0, queenScore = 0, kingScore = 0, aceScore = 0;
-
+			
+			Card [] cards = {hand.card1, hand.card2, hand.card3, hand.card4, hand.card5};
 			//loop thru cards, score the face values
-			for(int i = 0; i < hand.length; i++){
-				switch(hand[i].face){
+			for(int i = 0; i < cards.length; i++){
+				switch(cards[i].face){
 				case "Deuce":
 					deuceScore++;
 					break;
@@ -149,9 +152,15 @@ public class HandTest {
 		 */
 		@Test
 		public void testHandFaceScoring(){
-			Card [] hand = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5};
-
-			int [] score = Hand.faceScore(hand);
+			Hand hand = new Hand();
+			
+			hand.card1 = tempCard1;
+			hand.card2 = tempCard2;
+			hand.card3 = tempCard3;
+			hand.card4 = tempCard4;
+			hand.card5 = tempCard5;
+			
+			int [] score = faceScore(hand);
 			//face values in the hand:  three(2x), Four, jack, queen
 
 			assertEquals(2, score[1]);
@@ -167,9 +176,16 @@ public class HandTest {
 		@Test
 		public void testSuitScoring(){
 			
-			Card [] hand1 = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5}; 
+			Hand hand = new Hand();
+			
+			hand.card1 = tempCard1;
+			hand.card2 = tempCard2;
+			hand.card3 = tempCard3;
+			hand.card4 = tempCard4;
+			hand.card5 = tempCard5;
+			//Card [] hand1 = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5}; 
 		
-			int [] score = Hand.suitScore(hand1);
+			int [] score = suitScore(hand);
 			
 			System.out.println(score[0]);
 			System.out.println(score[1]);
