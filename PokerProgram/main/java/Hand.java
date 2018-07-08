@@ -23,9 +23,14 @@ public class Hand {
 		hand[3] = card4;
 		hand[4] = card5;
 		
+		
 	}
 	
 	//methods for hand
+	
+	public String toString(){
+		return card1.toString() + ", " + card2.toString() + ", " + card3.toString() + ", " + card4.toString() + ", " + card5.toString();
+	}
 	
 	//calculate suit score
 	public static int[] suitScore(Card [] hand){
@@ -111,7 +116,7 @@ public class Hand {
 	}
 	
 	//method to display evaluation results
-	public String handEvaluation(Card[] hand){
+	public static String handEvaluation(Card[] hand){
 		//put in logic to evaluate the various evaluations and display the evalution
 		String evaluation = "";
 		
