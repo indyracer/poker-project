@@ -12,7 +12,7 @@ public class HandEvaluationIsFourKind {
 	Card tempCard6 = new Card("Five", "Diamonds");
 	Card tempCard7 = new Card("Five", "Spades");
 	
-	public boolean isFourKind(Card[] hand){
+	public boolean isFourKind(Hand hand){
 		boolean isFourKind = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -37,7 +37,15 @@ public class HandEvaluationIsFourKind {
 	 */
 	@Test
 	public void isFourKindTest1() {
-		Card [] hand1 = {tempCard1, tempCard1, tempCard1, tempCard1, tempCard5};
+		
+		Hand hand1 = new Hand();
+		hand1.card1 = tempCard1;
+		hand1.card2 = tempCard1;
+		hand1.card3 = tempCard1;
+		hand1.card4 = tempCard1;
+		hand1.card5 = tempCard5;
+		
+		//Card [] hand1 = {tempCard1, tempCard1, tempCard1, tempCard1, tempCard5};
 		
 		assertTrue(isFourKind(hand1));
 	}
@@ -47,7 +55,15 @@ public class HandEvaluationIsFourKind {
 	 */
 	@Test
 	public void isFourKindTest2(){
-		Card [] hand2 = {tempCard1, tempCard1, tempCard1, tempCard4, tempCard4};
+		
+		Hand hand2 = new Hand();
+		hand2.card1 = tempCard1;
+		hand2.card2 = tempCard1;
+		hand2.card3 = tempCard1;
+		hand2.card4 = tempCard4;
+		hand2.card5 = tempCard4;
+		
+		//Card [] hand2 = {tempCard1, tempCard1, tempCard1, tempCard4, tempCard4};
 		
 		assertTrue(!isFourKind(hand2));
 	}
@@ -57,9 +73,17 @@ public class HandEvaluationIsFourKind {
 	 */
 	@Test
 	public void isFourKindTest3(){
-		Card [] hand3 = {tempCard1, tempCard1, tempCard1, tempCard4, tempCard5};
 		
-		assertTrue(!isFourKind(hand3));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
+		
+		//Card [] hand3 = {tempCard1, tempCard1, tempCard1, tempCard4, tempCard5};
+		
+		assertTrue(!isFourKind(hand));
 	}
 
 }

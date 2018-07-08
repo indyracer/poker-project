@@ -12,11 +12,7 @@ public class HandEvalutionIsThreeKind {
 	Card tempCard6 = new Card("Five", "Diamonds");
 	Card tempCard7 = new Card("Five", "Spades");
 	
-	Card [] hand1 = {tempCard1, tempCard1, tempCard1, tempCard4, tempCard5}; //hand with 3 of a kind
-	Card [] hand2 = {tempCard1, tempCard2, tempCard3, tempCard6, tempCard7}; //hand with 2 pairs
-	Card [] hand3 = {tempCard1, tempCard3, tempCard4, tempCard5, tempCard6}; //hand with no pairs
-	
-	public boolean isThreeKind(Card[] hand){
+	public boolean isThreeKind(Hand hand){
 		boolean isThreeKind = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -45,11 +41,14 @@ public class HandEvalutionIsThreeKind {
 	 */
 	@Test
 	public void isThreeKind1(){
-		Card [] hand1 = {tempCard1, tempCard1, tempCard1, tempCard4, tempCard5}; //hand with 3 of a kind
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
 		
-		assertTrue(isThreeKind(hand1));
-		
-		;
+		assertTrue(isThreeKind(hand));
 	}
 	
 	/*
@@ -57,9 +56,14 @@ public class HandEvalutionIsThreeKind {
 	 */
 	@Test
 	public void isThreeKind2(){
-		Card [] hand1 = {tempCard1, tempCard1, tempCard3, tempCard4, tempCard5}; //hand with a pair
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
 		
-		assertTrue(!isThreeKind(hand1));
+		assertTrue(!isThreeKind(hand));
 	}
 	
 	/*
@@ -67,9 +71,14 @@ public class HandEvalutionIsThreeKind {
 	 */
 	@Test
 	public void isThreeKind3(){
-		Card [] hand1 = {tempCard1, tempCard1, tempCard1, tempCard4, tempCard4}; //hand with full house
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard4;
 		
-		assertTrue(!isThreeKind(hand1));
+		assertTrue(!isThreeKind(hand));
 	}
 
 }

@@ -14,11 +14,8 @@ public class HandEvaluationTestsIsPair {
 	Card tempCard6 = new Card("Five", "Diamonds");
 	Card tempCard7 = new Card("Five", "Spades");
 	
-	Card [] hand1 = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5}; //hand with 1 pair
-	Card [] hand2 = {tempCard1, tempCard2, tempCard3, tempCard6, tempCard7}; //hand with 2 pairs
-	Card [] hand3 = {tempCard1, tempCard3, tempCard4, tempCard5, tempCard6}; //hand with no pairs
-	
-	public boolean isPair(Card[] hand){
+		
+	public boolean isPair(Hand hand){
 		boolean pair = false;
 		int [] score = Hand.faceScore(hand);
 		
@@ -52,9 +49,15 @@ public class HandEvaluationTestsIsPair {
 	 */
 	@Test
 	public void isPairTest1() {
-		Card [] hand1 = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5};
-			
-		assertTrue(isPair(hand1));		
+		
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
+		
+		assertTrue(isPair(hand));		
 	}
 	
 	/*
@@ -63,9 +66,14 @@ public class HandEvaluationTestsIsPair {
 	@Test
 	public void isPairTest2(){
 		
-		Card [] hand2 = {tempCard1, tempCard2, tempCard3, tempCard6, tempCard7}; //hand with 2 pairs
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard6;
+		hand.card5 = tempCard7;
 		
-		assertTrue(!isPair(hand2));
+		assertTrue(!isPair(hand));
 	}
 	
 	/*
@@ -73,9 +81,15 @@ public class HandEvaluationTestsIsPair {
 	 */
 	@Test
 	public void isPairTest3(){
-		Card [] hand3 = {tempCard1, tempCard3, tempCard4, tempCard5, tempCard6}; //hand with no pairs
 		
-		assertTrue(!isPair(hand3));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard3;
+		hand.card3 = tempCard4;
+		hand.card4 = tempCard5;
+		hand.card5 = tempCard6;
+		
+		assertTrue(!isPair(hand));
 	}
 	
 	/*
@@ -83,9 +97,15 @@ public class HandEvaluationTestsIsPair {
 	 */
 	@Test
 	public void isPairTest4(){
-		Card [] hand4 = {tempCard1, tempCard2, tempCard2, tempCard4, tempCard5}; //hand has 3 pair
 		
-		assertTrue(!isPair(hand4));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard2;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
+		
+		assertTrue(!isPair(hand));
 		
 	}
 	
@@ -94,9 +114,14 @@ public class HandEvaluationTestsIsPair {
 	 */
 	@Test
 	public void isPairTest5(){
-		Card [] hand5 = {tempCard1, tempCard2, tempCard2, tempCard6, tempCard7}; //hand with 2 pairs
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard2;
+		hand.card4 = tempCard6;
+		hand.card5 = tempCard7;
 		
-		assertTrue(!isPair(hand5));
+		assertTrue(!isPair(hand));
 	}
 
 }

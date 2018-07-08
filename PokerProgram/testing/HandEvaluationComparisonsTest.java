@@ -28,7 +28,7 @@ public class HandEvaluationComparisonsTest {
 	Card [] hand8 = {tempCard3, tempCard8, tempCard9, tempCard10, tempCard12};  //hand is flush, no straight
 	Card [] hand9 = {tempCard1, tempCard8, tempCard9, tempCard11, tempCard12};  //hand is high card
  	
-	public String handEvaluation(Card[] hand){
+	public String handEvaluation(Hand hand){
 		//put in logic to evaluate the various evaluations and display the evalution
 		String evaluation = "";
 		
@@ -75,9 +75,15 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void pairTest() {
-		assertTrue(handEvaluation(hand1).equals("Pair"));
-		assertTrue(!handEvaluation(hand2).equals("Pair"));  //check that two pair does not come up as a pair
-		System.out.println("Pair Evaluation is " + handEvaluation(hand1));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
+		
+		assertTrue(handEvaluation(hand).equals("Pair"));
+		System.out.println("Pair Evaluation is " + handEvaluation(hand));
 	}
 	
 	/*
@@ -85,9 +91,15 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void twoPairTest(){
-		assertTrue(handEvaluation(hand2).equals("Two Pair"));
-		assertTrue(!handEvaluation(hand1).equals("Two Pair")); //check that pair does not come up as two pair
-		System.out.println("Two Pair Evaluation is " + handEvaluation(hand2));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard6;
+		hand.card5 = tempCard7;
+		
+		assertTrue(handEvaluation(hand).equals("Two Pair"));
+		System.out.println("Two Pair Evaluation is " + handEvaluation(hand));
 	}
 	
 	/*
@@ -95,8 +107,16 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void threeOfAKindTest(){
-		assertTrue(handEvaluation(hand3).equals("Three of a Kind"));
-		System.out.println("Three of a Kind Evaluation is " + handEvaluation(hand3));
+		
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard5;
+		hand.card5 = tempCard6;
+		
+		assertTrue(handEvaluation(hand).equals("Three of a Kind"));
+		System.out.println("Three of a Kind Evaluation is " + handEvaluation(hand));
 	}
 	
 	/*
@@ -104,9 +124,15 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void fourOfAKindTest(){
-		assertTrue(handEvaluation(hand4).equals("Four of a Kind"));
-		assertTrue(!handEvaluation(hand3).equals("Four of a Kind")); //confirm that 3 of kind does not match four of a kind
-		System.out.println("Four of a Kind Evaluation is " + handEvaluation(hand4));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard1;
+		hand.card5 = tempCard6;
+		
+		assertTrue(handEvaluation(hand).equals("Four of a Kind"));
+		System.out.println("Four of a Kind Evaluation is " + handEvaluation(hand));
 	}
 	
 	/*
@@ -114,11 +140,16 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void fullHouseTest(){
-		assertTrue(handEvaluation(hand5).equals("Full House"));
-		assertTrue(!handEvaluation(hand3).equals("Full House")); //confirm that 3 of kind does not match full house 
-		assertTrue(!handEvaluation(hand2).equals("Full House"));  //confirm that 2 pair does not match full house
-		assertTrue(!handEvaluation(hand1).equals("Full House")); //confirm that a pair does not match full house
-		System.out.println("Full House Evaluation is " + handEvaluation(hand5));		
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard6;
+		hand.card5 = tempCard6;
+		
+		assertTrue(handEvaluation(hand).equals("Full House"));
+		
+		System.out.println("Full House Evaluation is " + handEvaluation(hand));		
 	}
 	
 	/*
@@ -126,9 +157,14 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void striaghtNoFlushTest(){
-		assertTrue(handEvaluation(hand6).equals("Straight"));
-		assertTrue(!handEvaluation(hand7).equals("Straight")); //confirm that straight flush does not match straight 
-		System.out.println("Straight no Flush Evaluation is " + handEvaluation(hand6));		
+		Hand hand = new Hand();
+		hand.card1 = tempCard8;
+		hand.card2 = tempCard9;
+		hand.card3 = tempCard10;
+		hand.card4 = tempCard11;
+		hand.card5 = tempCard13;
+		assertTrue(handEvaluation(hand).equals("Straight"));
+		System.out.println("Straight no Flush Evaluation is " + handEvaluation(hand));		
 	}
 	
 	/*
@@ -136,9 +172,14 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void flushTest(){
-		assertTrue(handEvaluation(hand8).equals("Flush")); 
-		assertTrue(!handEvaluation(hand7).equals("Flush")); //confirm straight flush does not match flush
-		System.out.println("Flush Evaluation is " + handEvaluation(hand8));		
+		Hand hand = new Hand();
+		hand.card1 = tempCard3;
+		hand.card2 = tempCard8;
+		hand.card3 = tempCard9;
+		hand.card4 = tempCard10;
+		hand.card5 = tempCard12;
+		assertTrue(handEvaluation(hand).equals("Flush")); 
+		System.out.println("Flush Evaluation is " + handEvaluation(hand));		
 	}
 	
 	/*
@@ -146,9 +187,14 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void striaghtFlushTest(){
-		assertTrue(!handEvaluation(hand6).equals("Straight Flush")); //confirm straight no flush does not match straight flush
-		assertTrue(handEvaluation(hand7).equals("Straight Flush")); 
-		System.out.println("Straight Flush Evaluation is " + handEvaluation(hand7));		
+		Hand hand = new Hand();
+		hand.card1 = tempCard8;
+		hand.card2 = tempCard9;
+		hand.card3 = tempCard10;
+		hand.card4 = tempCard11;
+		hand.card5 = tempCard12;
+		assertTrue(handEvaluation(hand).equals("Straight Flush")); 
+		System.out.println("Straight Flush Evaluation is " + handEvaluation(hand));		
 	}
 	
 	/*
@@ -156,9 +202,14 @@ public class HandEvaluationComparisonsTest {
 	 */
 	@Test
 	public void highCardTest(){
-		assertTrue(handEvaluation(hand9).equals("High Card")); 
-		assertTrue(!handEvaluation(hand8).equals("High Card")); 
-		System.out.println("High Card Evaluation is " + handEvaluation(hand9));		
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard8;
+		hand.card3 = tempCard9;
+		hand.card4 = tempCard11;
+		hand.card5 = tempCard12;
+		assertTrue(handEvaluation(hand).equals("High Card")); 
+		System.out.println("High Card Evaluation is " + handEvaluation(hand));		
 	}
 
 }

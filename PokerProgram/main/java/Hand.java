@@ -33,13 +33,14 @@ public class Hand {
 	}
 	
 	//calculate suit score
-	public static int[] suitScore(Card [] hand){
+	public static int[] suitScore(Hand hand){
 		//score hand based on suits
 		int diamondScore = 0, heartScore = 0, clubScore = 0, spadeScore = 0;
+		Card [] cards = {hand.card1, hand.card2, hand.card3, hand.card4, hand.card5};
 		
 		//loop thru cards, score the suit value
-		for(int i = 0; i < hand.length; i++){
-			switch(hand[i].suit){
+		for(int i = 0; i < cards.length; i++){
+			switch(cards[i].suit){
 			case "Diamonds":
 				diamondScore++;
 				break;
@@ -61,13 +62,15 @@ public class Hand {
 		return suitScore;		
 	}
 	//calculate score of hand
-	public static int[] faceScore(Card [] hand){
+	public static int[] faceScore(Hand hand){
 		int deuceScore = 0, threeScore = 0, fourScore = 0, fiveScore = 0, sixScore = 0, sevenScore = 0,
 				eightScore = 0, nineScore = 0, tenScore = 0, jackScore = 0, queenScore = 0, kingScore = 0, aceScore = 0;
+		
+		Card [] cards = {hand.card1, hand.card2, hand.card3, hand.card4, hand.card5};
 
 		//loop thru cards, score the face values
-		for(int i = 0; i < hand.length; i++){
-			switch(hand[i].face){
+		for(int i = 0; i < cards.length; i++){
+			switch(cards[i].face){
 			case "Deuce":
 				deuceScore++;
 				break;
@@ -116,7 +119,7 @@ public class Hand {
 	}
 	
 	//method to display evaluation results
-	public static String handEvaluation(Card[] hand){
+	public static String handEvaluation(Hand hand){
 		//put in logic to evaluate the various evaluations and display the evalution
 		String evaluation = "";
 		
@@ -159,7 +162,7 @@ public class Hand {
 	
 	
 	//method to evaluate if hand is a pair
-	public static boolean isPair(Card[] hand){
+	public static boolean isPair(Hand hand){
 		boolean pair = false;
 		int [] score = faceScore(hand);
 		
@@ -189,7 +192,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if hand is three of a kind
-	public static boolean isThreeKind(Card[] hand){
+	public static boolean isThreeKind(Hand hand){
 		boolean isThreeKind = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -214,7 +217,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if two pair
-	public static boolean isTwoPair(Card[] hand){
+	public static boolean isTwoPair(Hand hand){
 		boolean twoPair = false;
 		int [] score = Hand.faceScore(hand);
 		
@@ -242,7 +245,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if full house
-	public static boolean isFullHouse(Card[] hand){
+	public static boolean isFullHouse(Hand hand){
 		boolean isFullHouse = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -268,7 +271,7 @@ public class Hand {
 	}
 	
 	//method to evaluate if four of a kind
-	public static boolean isFourKind(Card[] hand){
+	public static boolean isFourKind(Hand hand){
 		boolean isFourKind = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -289,7 +292,7 @@ public class Hand {
 	}
 	
 	//method to evaluate straight
-	public static boolean isStraight(Card[] hand){
+	public static boolean isStraight(Hand hand){
 		boolean isStraight = false;
 		
 		int[] score = Hand.faceScore(hand);
@@ -306,7 +309,7 @@ public class Hand {
 		return isStraight;
 	}
 	
-	public static boolean isFlush(Card [] hand){
+	public static boolean isFlush(Hand hand){
 		boolean isFlush = false;
 		
 		int [] score = Hand.suitScore(hand);

@@ -14,7 +14,7 @@ public class HandEvaluationIsStraight {
 	Card tempCard6 = new Card("Five", "Hearts");
 	Card tempCard7 = new Card("Five", "Spades");
 	
-	public boolean isStraight(Card[] hand){
+	public boolean isStraight(Hand hand){
 		boolean isStraight = false;
 		
 		int[] score = Hand.faceScore(hand);
@@ -36,8 +36,13 @@ public class HandEvaluationIsStraight {
 	 */
 	@Test
 	public void isStraight1() {
-		Card [] hand = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5};
-		
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
+	
 		assertTrue(isStraight(hand));
 	}
 	
@@ -46,7 +51,13 @@ public class HandEvaluationIsStraight {
 	 */
 	@Test
 	public void isStraigth2(){
-		Card[] hand = {tempCard1, tempCard1, tempCard3,tempCard4, tempCard5};
+		
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard5;
 		
 		assertTrue(!isStraight(hand));
 		

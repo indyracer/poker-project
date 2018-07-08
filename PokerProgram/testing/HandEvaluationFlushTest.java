@@ -13,8 +13,9 @@ public class HandEvaluationFlushTest {
 	Card tempCard7 = new Card("Five", "Spades");
 	
 
-	public boolean isFlush(Card [] hand){
+	public boolean isFlush(Hand hand){
 		boolean isFlush = false;
+		
 		
 		int [] score = Hand.suitScore(hand);
 		
@@ -30,7 +31,14 @@ public class HandEvaluationFlushTest {
 	 */
 	@Test
 	public void test() {
-		Card [] hand = {tempCard1, tempCard1, tempCard1, tempCard1, tempCard1};
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard1;
+		hand.card5 = tempCard1;
+		
+		Card [] cards = {tempCard1, tempCard1, tempCard1, tempCard1, tempCard1};
 		
 		assertTrue(isFlush(hand));
 	}
@@ -40,7 +48,15 @@ public class HandEvaluationFlushTest {
 	 */
 	@Test
 	public void testIsFlush2(){
-		Card [] hand = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard6};
+		
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard2;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard6;
+		
+		Card [] cards = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard6};
 		
 		assertTrue(!isFlush(hand));
 	}

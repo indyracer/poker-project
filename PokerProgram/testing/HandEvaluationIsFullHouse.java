@@ -12,13 +12,8 @@ public class HandEvaluationIsFullHouse {
 	Card tempCard6 = new Card("Five", "Diamonds");
 	Card tempCard7 = new Card("Five", "Spades");
 	
-
-	Card [] hand1 = {tempCard1, tempCard2, tempCard3, tempCard4, tempCard5}; //hand with 1 pair
-	Card [] hand2 = {tempCard1, tempCard2, tempCard3, tempCard6, tempCard7}; //hand with 2 pairs
-	Card [] hand3 = {tempCard1, tempCard3, tempCard4, tempCard5, tempCard6}; //hand with no pairs
 	
-	
-	public boolean isFullHouse(Card[] hand){
+	public boolean isFullHouse(Hand hand){
 		boolean isFullHouse = false;
 		
 		int [] score = Hand.faceScore(hand);
@@ -52,9 +47,14 @@ public class HandEvaluationIsFullHouse {
 	@Test
 	public void isFullHouseTest1() {
 		
-		Card [] hand1 = {tempCard1, tempCard1, tempCard3, tempCard3, tempCard3};
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard3;
+		hand.card5 = tempCard3;
 		
-		assertTrue(isFullHouse(hand1));
+		assertTrue(isFullHouse(hand));
 		
 	}
 	
@@ -63,9 +63,15 @@ public class HandEvaluationIsFullHouse {
 	 */
 	@Test
 	public void isFullHouseTest2(){
-		Card [] hand2 = {tempCard1, tempCard1, tempCard3, tempCard4, tempCard4};
 		
-		assertTrue(!isFullHouse(hand2));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard3;
+		hand.card4 = tempCard4;
+		hand.card5 = tempCard4;
+		
+		assertTrue(!isFullHouse(hand));
 	}
 	
 	/*
@@ -73,9 +79,15 @@ public class HandEvaluationIsFullHouse {
 	 */
 	@Test
 	public void isFullHouseTest3(){
-		Card [] hand3 = {tempCard1, tempCard1, tempCard1, tempCard3, tempCard4};
 		
-		assertTrue(!isFullHouse(hand3));
+		Hand hand = new Hand();
+		hand.card1 = tempCard1;
+		hand.card2 = tempCard1;
+		hand.card3 = tempCard1;
+		hand.card4 = tempCard3;
+		hand.card5 = tempCard4;
+		
+		assertTrue(!isFullHouse(hand));
 	}
 
 }
